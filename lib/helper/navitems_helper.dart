@@ -3,9 +3,9 @@ String getTitleByIndex(int index) {
     case 0:
       return 'Home';
     case 1:
-      return 'Search';
+      return 'Networks';
     case 2:
-      return 'People';
+      return 'Chains';
     case 3:
       return 'Favorites';
     case 4:

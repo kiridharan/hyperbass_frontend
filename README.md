@@ -22,4 +22,4 @@ HyperBass is a fully managed blockchain deployment and monitoring service with p
 - [x] HyperBass Flutter App
 - [x] HyperBass Endpoints
 
-This is managed by the HyperBass team @kiridharan
+This is managed by the HyperBass team [@kiridharan](https://github.com/kiridharan)

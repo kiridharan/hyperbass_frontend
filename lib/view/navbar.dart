@@ -80,15 +80,15 @@ class NavBarItems extends StatelessWidget {
         ),
         const SidebarXItem(
           icon: Icons.search,
-          label: 'Search',
+          label: 'Networks',
         ),
         const SidebarXItem(
           icon: Icons.people,
-          label: 'People',
+          label: 'Nodes',
         ),
         const SidebarXItem(
           icon: Icons.favorite,
-          label: 'Favorites',
+          label: 'Chains',
         ),
         const SidebarXItem(
           iconWidget: FlutterLogo(size: 20),
