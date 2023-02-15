@@ -17,18 +17,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _controller = SidebarXController(selectedIndex: 0, extended: true);
-
-  final _key = GlobalKey<ScaffoldState>();
-
-  final _views = [
-    const HomePage(),
-    // const SearchPage(),
-    // const PeoplePage(),
-    // const FavoritesPage(),
-    // const ProfilePage(),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -37,7 +37,7 @@ class _NetworkCardState extends State<NetworkCard> {
           const Align(
             alignment: Alignment.center,
             child: Text(
-              "Netowrk",
+              "Netowork",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 16,
@@ -46,71 +46,92 @@ class _NetworkCardState extends State<NetworkCard> {
             ),
           ),
           Expanded(
-            child: SfDataGrid(
-              source: networkDataSource,
-              columns: <GridColumn>[
-                GridColumn(
-                  columnName: 'id',
-                  label: Container(
-                    padding: const EdgeInsets.all(16.0),
-                    alignment: Alignment.centerRight,
-                    child: const Text(
-                      'Name',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+            child: SizedBox(
+              // color: Colors.amber,
+              height: height / 1.9,
+              width: width * .4,
+              child: Center(
+                child: Container(
+                  padding: isSmallScreen
+                      ? const EdgeInsets.all(0)
+                      : const EdgeInsets.all(19),
+                  child: SfDataGrid(
+                    // onCellTap: (details) {
+                    //   // print(details.column);
+                    // },
+                    // headerGridLinesVisibility: GridLinesVisibility.none,
+                    headerRowHeight: 50,
+                    rowHeight: 50,
+                    columnWidthMode: ColumnWidthMode.fill,
+                    // gridLinesVisibility: GridLinesVisibility.none,
+
+                    source: networkDataSource,
+                    columns: <GridColumn>[
+                      GridColumn(
+                        columnName: 'id',
+                        label: Container(
+                          padding: const EdgeInsets.all(16.0),
+                          alignment: Alignment.centerRight,
+                          child: const Text(
+                            'Name',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                      GridColumn(
+                        columnName: 'name',
+                        label: Container(
+                          padding: const EdgeInsets.all(16.0),
+                          alignment: Alignment.centerLeft,
+                          child: const Text(
+                            'Active',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                      GridColumn(
+                        columnName: 'designation',
+                        width: 120,
+                        label: Container(
+                          padding: const EdgeInsets.all(16.0),
+                          alignment: Alignment.centerLeft,
+                          child: const Text(
+                            'Deactive',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                      GridColumn(
+                        columnName: 'Date',
+                        label: Container(
+                          padding: const EdgeInsets.all(16.0),
+                          alignment: Alignment.centerRight,
+                          child: const Text(
+                            'Date',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                GridColumn(
-                  columnName: 'name',
-                  label: Container(
-                    padding: const EdgeInsets.all(16.0),
-                    alignment: Alignment.centerLeft,
-                    child: const Text(
-                      'Active',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                GridColumn(
-                  columnName: 'designation',
-                  width: 120,
-                  label: Container(
-                    padding: const EdgeInsets.all(16.0),
-                    alignment: Alignment.centerLeft,
-                    child: const Text(
-                      'Deactive',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                GridColumn(
-                  columnName: 'Date',
-                  label: Container(
-                    padding: const EdgeInsets.all(16.0),
-                    alignment: Alignment.centerRight,
-                    child: const Text(
-                      'Date',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ],

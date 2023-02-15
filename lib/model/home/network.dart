@@ -37,6 +37,30 @@ class Networks {
         deaactive: 'Deactive',
         date: '2021-09-09',
       ),
+      Networks(
+        name: 'Network 5',
+        active: 'Active',
+        deaactive: 'Deactive',
+        date: '2021-09-09',
+      ),
+      Networks(
+        name: 'Network 6',
+        active: 'Active',
+        deaactive: 'Deactive',
+        date: '2021-09-09',
+      ),
+      Networks(
+        name: 'Network 7',
+        active: 'Active',
+        deaactive: 'Deactive',
+        date: '2021-09-09',
+      ),
+      Networks(
+        name: 'Network 8',
+        active: 'Active',
+        deaactive: 'Deactive',
+        date: '2021-09-09',
+      ),
     ];
   }
 }
