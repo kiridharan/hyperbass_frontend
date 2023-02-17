@@ -52,11 +52,26 @@ class _HelperState extends State<Helper> {
 
   final _views = [
     const HomePage(),
+    const Text("Search"),
+    const Text("People"),
+    const Text("Favorites"),
+    const Text("Profile"),
     // const SearchPage(),
     // const PeoplePage(),
     // const FavoritesPage(),
     // const ProfilePage(),
   ];
+
+  @override
+  void initState() {
+    _controller.addListener(() {
+      setState(() {
+        _views;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Builder(

@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:blockchain/const/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,29 +20,31 @@ class DashboardContainer extends StatelessWidget {
       width: isSmallScreen ? width * .9 : width * .26,
       height: isSmallScreen ? height * .2 : height * .2,
       decoration: BoxDecoration(
-        color: canvasColor,
+        // color: Colors.grey.shade100,
+        color: Colors.grey.shade900.withOpacity(.2),
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 1,
-            blurRadius: 7,
-            offset: const Offset(0, 3), // changes position of shadow
-          ),
-        ],
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Colors.grey.withOpacity(0.5),
+        //     spreadRadius: 1,
+        //     blurRadius: 7,
+        //     offset: const Offset(0, 3), // changes position of shadow
+        //   ),
+        // ],
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Center(
-              child: Text(
-            text,
-            style: GoogleFonts.roboto(
-              fontSize: isSmallScreen ? 20 : 30,
-              color: Colors.white,
+            child: Text(
+              text,
+              style: GoogleFonts.roboto(
+                fontSize: isSmallScreen ? 20 : 30,
+                color: Colors.white,
+              ),
             ),
-          )),
+          ),
           Center(
             child: Text(
               num.toString(),

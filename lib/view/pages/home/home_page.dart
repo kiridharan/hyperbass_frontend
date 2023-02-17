@@ -18,64 +18,65 @@ class _HomePageState extends State<HomePage> {
     // final isSmallScreen = MediaQuery.of(context).size.width < 600;
     // final height = MediaQuery.of(context).size.height;
     return Scaffold(
+        backgroundColor: Colors.grey.shade200.withOpacity(.1),
         body: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Expanded(
-          child: Wrap(
-            crossAxisAlignment: WrapCrossAlignment.center,
-            verticalDirection: VerticalDirection.down,
-            direction: Axis.horizontal,
-            spacing: width * .03,
-            runSpacing: 8,
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Wrap(
-                  direction: Axis.horizontal,
-                  spacing: width * .03,
-                  runSpacing: 8,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                verticalDirection: VerticalDirection.down,
+                direction: Axis.horizontal,
+                spacing: width * .03,
+                runSpacing: 8,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Wrap(
+                      direction: Axis.horizontal,
+                      spacing: width * .03,
+                      runSpacing: 8,
 
-                  // shrinkWrap: true,
-                  children: const [
-                    DashboardContainer(
-                      text: "Total Nodes",
-                      num: 3,
+                      // shrinkWrap: true,
+                      children: const [
+                        DashboardContainer(
+                          text: "Total Nodes",
+                          num: 3,
+                        ),
+                        DashboardContainer(
+                          text: "Total Blocks",
+                          num: 4,
+                        ),
+                        DashboardContainer(
+                          text: "Total Transactions",
+                          num: 5,
+                        ),
+                      ],
                     ),
-                    DashboardContainer(
-                      text: "Total Blocks",
-                      num: 4,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Wrap(
+                      direction: Axis.horizontal,
+                      spacing: width * .03,
+                      runSpacing: 8,
+                      crossAxisAlignment: WrapCrossAlignment.start,
+                      // shrinkWrap: true,
+                      children: const [
+                        NetworkCard(),
+                        NetworkCard(),
+                      ],
                     ),
-                    DashboardContainer(
-                      text: "Total Transactions",
-                      num: 5,
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Wrap(
-                  direction: Axis.horizontal,
-                  spacing: width * .03,
-                  runSpacing: 8,
-                  crossAxisAlignment: WrapCrossAlignment.start,
-                  // shrinkWrap: true,
-                  children: const [
-                    NetworkCard(),
-                    NetworkCard(),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        // const SizedBox(
-        //   height: 10,
-        // ),
-      ],
-    ));
+            ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
+          ],
+        ));
   }
 }

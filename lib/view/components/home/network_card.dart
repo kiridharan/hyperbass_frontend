@@ -62,7 +62,7 @@ class _NetworkCardState extends State<NetworkCard> {
                     // headerGridLinesVisibility: GridLinesVisibility.none,
                     headerRowHeight: 50,
                     rowHeight: 50,
-                    columnWidthMode: ColumnWidthMode.fill,
+                    // columnWidthMode: ColumnWidthMode.fill,
                     // gridLinesVisibility: GridLinesVisibility.none,
 
                     source: networkDataSource,
