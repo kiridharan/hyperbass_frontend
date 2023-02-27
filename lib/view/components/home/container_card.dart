@@ -1,61 +1,65 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class DashboardContainer extends StatelessWidget {
-  final int num;
+class ViewCards extends StatelessWidget {
   final String text;
-  const DashboardContainer({
-    Key? key,
-    required this.text,
-    required this.num,
-  }) : super(key: key);
+  final String imageUrl;
+  final String subtitle;
+  final Function() onPressed;
+
+  const ViewCards(
+      {required this.text,
+      required this.imageUrl,
+      required this.subtitle,
+      required this.onPressed,
+      Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final isSmallScreen = MediaQuery.of(context).size.width < 600;
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
-    return Container(
-      width: isSmallScreen ? width * .9 : width * .26,
-      height: isSmallScreen ? height * .2 : height * .2,
-      decoration: BoxDecoration(
-        // color: Colors.grey.shade100,
-        color: Colors.grey.shade900.withOpacity(.2),
-        borderRadius: BorderRadius.circular(10),
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Colors.grey.withOpacity(0.5),
-        //     spreadRadius: 1,
-        //     blurRadius: 7,
-        //     offset: const Offset(0, 3), // changes position of shadow
-        //   ),
-        // ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Center(
-            child: Text(
-              text,
-              style: GoogleFonts.roboto(
-                fontSize: isSmallScreen ? 20 : 30,
-                color: Colors.white,
-              ),
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: 150,
+        height: 150,
+        padding: const EdgeInsets.all(15.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12.5),
+          boxShadow: [
+            BoxShadow(
+                offset: const Offset(10, 20),
+                blurRadius: 10,
+                spreadRadius: 0,
+                color: Colors.grey.withOpacity(.05)),
+          ],
+        ),
+        child: Column(
+          children: [
+            Image.asset(imageUrl, height: 59, fit: BoxFit.cover),
+            const Spacer(),
+            Text(text,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                )),
+            const SizedBox(
+              height: 5,
             ),
-          ),
-          Center(
-            child: Text(
-              num.toString(),
-              style: GoogleFonts.roboto(
-                fontSize: isSmallScreen ? 20 : 30,
-                color: Colors.white,
-              ),
-              // style: Theme.of(context).textTheme.headlineSmall,
+            Text(
+              subtitle,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 12),
             ),
-          ),
-        ],
+            const SizedBox(
+              height: 10,
+            ),
+          ],
+        ),
       ),
     );
   }

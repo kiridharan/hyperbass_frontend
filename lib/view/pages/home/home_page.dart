@@ -1,5 +1,5 @@
 import 'package:blockchain/view/components/home/container_card.dart';
-import 'package:blockchain/view/components/home/network_card.dart';
+import 'package:blockchain/view/components/home/topbar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,71 +12,110 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final String imageURL = "assets/images/node.png";
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     // final isSmallScreen = MediaQuery.of(context).size.width < 600;
     // final height = MediaQuery.of(context).size.height;
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
+        appBar: const PreferredSize(
+            preferredSize: Size.fromHeight(100.0),
+            child: TopBarFb(
+              title: "Dashboard",
+              upperTitle: "Welcome Back,",
+            )),
         backgroundColor: Colors.grey.shade200.withOpacity(.1),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                verticalDirection: VerticalDirection.down,
-                direction: Axis.horizontal,
-                spacing: width * .03,
-                runSpacing: 8,
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: SizedBox(
+              width: width,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Wrap(
-                      direction: Axis.horizontal,
-                      spacing: width * .03,
-                      runSpacing: 8,
+                  Wrap(
+                    // crossAxisAlignment: WrapCrossAlignment
+                    crossAxisAlignment: WrapCrossAlignment.start,
+                    alignment: WrapAlignment.spaceEvenly,
+                    // direction: Axis.horizontal,
+                    // spacing: 20,
+                    runSpacing: 30,
+                    children: [
+                      ViewCards(
+                        text: 12.toString(),
+                        imageUrl: imageURL,
+                        subtitle: "WORKSPACES",
+                        onPressed: () {
+                          // print("Network");
+                        },
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      ViewCards(
+                        text: 12.toString(),
+                        imageUrl: imageURL,
+                        subtitle: "NETWORKS",
+                        onPressed: () {
+                          // print("Network");
+                        },
+                      ),
 
-                      // shrinkWrap: true,
-                      children: const [
-                        DashboardContainer(
-                          text: "Total Nodes",
-                          num: 3,
-                        ),
-                        DashboardContainer(
-                          text: "Total Blocks",
-                          num: 4,
-                        ),
-                        DashboardContainer(
-                          text: "Total Transactions",
-                          num: 5,
-                        ),
-                      ],
-                    ),
+                      ViewCards(
+                        text: 12.toString(),
+                        imageUrl: imageURL,
+                        subtitle: "NODES",
+                        onPressed: () {
+                          // print("Network");
+                        },
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      ViewCards(
+                        text: 12.toString(),
+                        imageUrl: imageURL,
+                        subtitle: "CLOUDS",
+                        onPressed: () {
+                          // print("Network");
+                        },
+                      ),
+                      // const NetworkCard()
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Wrap(
-                      direction: Axis.horizontal,
-                      spacing: width * .03,
-                      runSpacing: 8,
-                      crossAxisAlignment: WrapCrossAlignment.start,
-                      // shrinkWrap: true,
-                      children: const [
-                        NetworkCard(),
-                        NetworkCard(),
-                      ],
-                    ),
+                  const SizedBox(
+                    height: 20,
                   ),
+                  Container(
+                    width: width,
+                    height: 300,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    // ListView for showing all running nodes
+                    child: ListView.builder(
+                        itemCount: 10,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            onTap: () {},
+                            leading: const Icon(Icons.ac_unit),
+                            title: const Text("Node 1"),
+                            subtitle: const Text("Running"),
+                            trailing: const Icon(Icons.arrow_forward_ios),
+                          );
+                        }),
+                  )
                 ],
               ),
             ),
-            // const SizedBox(
-            //   height: 10,
-            // ),
-          ],
-        ));
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -1,110 +1,175 @@
-import 'package:blockchain/const/constant.dart';
-import 'package:blockchain/helper/navitems_helper.dart';
-import 'package:blockchain/view/navbar.dart';
+import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
+import 'package:blockchain/view/pages/createnode/create_node.dart';
 import 'package:blockchain/view/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:sidebarx/sidebarx.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      title: 'Animated Notch Bottom Bar',
       theme: ThemeData(
-        primaryColor: primaryColor,
-        canvasColor: canvasColor,
-        scaffoldBackgroundColor: scaffoldBackgroundColor,
-        textTheme: const TextTheme(
-          headlineSmall: TextStyle(
-            color: Colors.white,
-            fontSize: 46,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
+        primarySwatch: Colors.blue,
       ),
-      home: const Helper(),
+      home: const MyHomePage(),
     );
   }
 }
 
-class Helper extends StatefulWidget {
-  const Helper({super.key});
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  State<Helper> createState() => _HelperState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _HelperState extends State<Helper> {
-  final _controller = SidebarXController(selectedIndex: 0, extended: true);
+class _MyHomePageState extends State<MyHomePage> {
+  /// Controller to handle PageView and also handles initial page
+  final _pageController = PageController(initialPage: 0);
 
-  final _key = GlobalKey<ScaffoldState>();
+  int maxCount = 5;
 
-  final _views = [
+  /// widget list
+  final List<Widget> bottomBarPages = [
     const HomePage(),
-    const Text("Search"),
-    const Text("People"),
-    const Text("Favorites"),
-    const Text("Profile"),
-    // const SearchPage(),
-    // const PeoplePage(),
-    // const FavoritesPage(),
-    // const ProfilePage(),
+    const CreateNode(),
+    const Page3(),
+    const Page4(),
+    const Page5(),
   ];
 
   @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   void initState() {
-    _controller.addListener(() {
-      setState(() {
-        _views;
-      });
-    });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) {
-        final isSmallScreen = MediaQuery.of(context).size.width < 600;
-        return Scaffold(
-          key: _key,
-          appBar: isSmallScreen
-              ? AppBar(
-                  backgroundColor: canvasColor,
-                  title: Text(getTitleByIndex(_controller.selectedIndex)),
-                  leading: IconButton(
-                    onPressed: () {
-                      // if (!Platform.isAndroid && !Platform.isIOS) {
-                      //   _controller.setExtended(true);
-                      // }
-                      _key.currentState?.openDrawer();
-                    },
-                    icon: const Icon(Icons.menu),
+    return Scaffold(
+      body: PageView(
+        controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: List.generate(
+            bottomBarPages.length, (index) => bottomBarPages[index]),
+      ),
+      extendBody: true,
+      bottomNavigationBar: (bottomBarPages.length <= maxCount)
+          ? AnimatedNotchBottomBar(
+              pageController: _pageController,
+              color: Colors.white,
+              showLabel: false,
+              notchColor: Colors.white,
+              bottomBarItems: const [
+                BottomBarItem(
+                  inActiveItem: Icon(
+                    Icons.home_filled,
+                    color: Colors.blueGrey,
                   ),
-                )
-              : null,
-          drawer: NavBarItems(controller: _controller),
-          body: Row(
-            children: [
-              if (!isSmallScreen) NavBarItems(controller: _controller),
-              Expanded(
-                child: _views[_controller.selectedIndex],
-              ),
-            ],
-          ),
-        );
-      },
+                  activeItem: Icon(
+                    Icons.home_filled,
+                    color: Colors.blueAccent,
+                  ),
+                  itemLabel: 'Page 1',
+                ),
+                BottomBarItem(
+                  inActiveItem: Icon(
+                    Icons.create_outlined,
+                    color: Colors.blueGrey,
+                  ),
+                  activeItem: Icon(
+                    Icons.star,
+                    color: Colors.blueAccent,
+                  ),
+                  itemLabel: 'Page 2',
+                ),
+
+                ///svg example
+                BottomBarItem(
+                  inActiveItem: Icon(
+                    Icons.star,
+                    color: Colors.blueGrey,
+                  ),
+                  activeItem: Icon(
+                    Icons.star,
+                    color: Colors.blueAccent,
+                  ),
+                  itemLabel: 'Page 3',
+                ),
+                BottomBarItem(
+                  inActiveItem: Icon(
+                    Icons.settings,
+                    color: Colors.blueGrey,
+                  ),
+                  activeItem: Icon(
+                    Icons.settings,
+                    color: Colors.pink,
+                  ),
+                  itemLabel: 'Page 4',
+                ),
+                BottomBarItem(
+                  inActiveItem: Icon(
+                    Icons.person,
+                    color: Colors.blueGrey,
+                  ),
+                  activeItem: Icon(
+                    Icons.person,
+                    color: Colors.yellow,
+                  ),
+                  itemLabel: 'Page 5',
+                ),
+              ],
+              onTap: (index) {
+                /// control your animation using page controller
+                _pageController.animateToPage(
+                  index,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeIn,
+                );
+              },
+            )
+          : null,
     );
+  }
+}
+
+class Page3 extends StatelessWidget {
+  const Page3({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color: Colors.red, child: const Center(child: Text('Page 3')));
+  }
+}
+
+class Page4 extends StatelessWidget {
+  const Page4({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color: Colors.blue, child: const Center(child: Text('Page 4')));
+  }
+}
+
+class Page5 extends StatelessWidget {
+  const Page5({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color: Colors.lightGreenAccent,
+        child: const Center(child: Text('Page 4')));
   }
 }
