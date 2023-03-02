@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
 class TopBarFb extends StatelessWidget {
+  final bool autoback;
   final String title;
   final String upperTitle;
-  const TopBarFb({required this.title, required this.upperTitle, Key? key})
+  var func;
+  TopBarFb(
+      {required this.title,
+      required this.func,
+      required this.autoback,
+      required this.upperTitle,
+      Key? key})
       : super(key: key);
   final primaryColor = const Color(0xff9b9bfc);
   final secondaryColor = const Color(0xff0ebbde);
@@ -19,20 +26,33 @@ class TopBarFb extends StatelessWidget {
           gradient: LinearGradient(colors: [primaryColor, secondaryColor])),
       child: Padding(
         padding: const EdgeInsets.all(25.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
           children: [
-            Text(title,
-                style: const TextStyle(
-                    color: Colors.white70,
-                    fontSize: 14,
-                    fontWeight: FontWeight.normal)),
-            Text(upperTitle,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold))
+            autoback
+                ? IconButton(
+                    onPressed: func,
+                    icon: const Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.white,
+                    ),
+                  )
+                : const SizedBox(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title,
+                    style: const TextStyle(
+                        color: Colors.white70,
+                        fontSize: 14,
+                        fontWeight: FontWeight.normal)),
+                Text(upperTitle,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold))
+              ],
+            ),
           ],
         ),
       ),

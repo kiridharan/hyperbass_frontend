@@ -16,9 +16,11 @@ class _CreateNodeState extends State<CreateNode> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: const PreferredSize(
-            preferredSize: Size.fromHeight(100.0),
+          appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(100.0),
             child: TopBarFb(
+              func: () => Navigator.pop(context),
+              autoback: false,
               title: 'Create Node',
               upperTitle: "Create a new node",
             ),

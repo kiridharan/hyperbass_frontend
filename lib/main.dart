@@ -2,17 +2,16 @@ import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_not
 import 'package:blockchain/view/pages/createnode/create_node.dart';
 import 'package:blockchain/view/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const GetMaterialApp(home: MyApp()));
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Animated Notch Bottom Bar',
+      title: 'HyperBASE',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -30,15 +29,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   /// Controller to handle PageView and also handles initial page
-  final _pageController = PageController(initialPage: 0);
+  final _pageController = PageController(initialPage: 2);
 
   int maxCount = 5;
 
   /// widget list
   final List<Widget> bottomBarPages = [
-    const HomePage(),
-    const CreateNode(),
     const Page3(),
+    const CreateNode(),
+    const HomePage(),
     const Page4(),
     const Page5(),
   ];
@@ -71,29 +70,6 @@ class _MyHomePageState extends State<MyHomePage> {
               showLabel: false,
               notchColor: Colors.white,
               bottomBarItems: const [
-                BottomBarItem(
-                  inActiveItem: Icon(
-                    Icons.home_filled,
-                    color: Colors.blueGrey,
-                  ),
-                  activeItem: Icon(
-                    Icons.home_filled,
-                    color: Colors.blueAccent,
-                  ),
-                  itemLabel: 'Page 1',
-                ),
-                BottomBarItem(
-                  inActiveItem: Icon(
-                    Icons.create_outlined,
-                    color: Colors.blueGrey,
-                  ),
-                  activeItem: Icon(
-                    Icons.star,
-                    color: Colors.blueAccent,
-                  ),
-                  itemLabel: 'Page 2',
-                ),
-
                 ///svg example
                 BottomBarItem(
                   inActiveItem: Icon(
@@ -105,6 +81,28 @@ class _MyHomePageState extends State<MyHomePage> {
                     color: Colors.blueAccent,
                   ),
                   itemLabel: 'Page 3',
+                ),
+                BottomBarItem(
+                  inActiveItem: Icon(
+                    Icons.create_outlined,
+                    color: Colors.blueGrey,
+                  ),
+                  activeItem: Icon(
+                    Icons.create_outlined,
+                    color: Colors.blueAccent,
+                  ),
+                  itemLabel: 'Page 2',
+                ),
+                BottomBarItem(
+                  inActiveItem: Icon(
+                    Icons.home_filled,
+                    color: Colors.blueGrey,
+                  ),
+                  activeItem: Icon(
+                    Icons.home_filled,
+                    color: Colors.blueAccent,
+                  ),
+                  itemLabel: 'Page 1',
                 ),
                 BottomBarItem(
                   inActiveItem: Icon(
@@ -159,7 +157,8 @@ class Page4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.blue, child: const Center(child: Text('Page 4')));
+        color: Colors.blue,
+        child: const Center(child: Text('Page 4 for Channek addition')));
   }
 }
 
@@ -170,6 +169,6 @@ class Page5 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.lightGreenAccent,
-        child: const Center(child: Text('Page 4')));
+        child: const Center(child: Text('Page 4 for billing')));
   }
 }

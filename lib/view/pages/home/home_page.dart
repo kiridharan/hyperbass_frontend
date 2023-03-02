@@ -1,6 +1,8 @@
 import 'package:blockchain/view/components/home/container_card.dart';
 import 'package:blockchain/view/components/home/topbar.dart';
+import 'package:blockchain/view/pages/individualnode/individual_node.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -13,6 +15,36 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final String imageURL = "assets/images/node.png";
+  final _nodeData = [
+    {
+      "name": "Network 1",
+      "status": "Running",
+    },
+    {
+      "name": "Network 2",
+      "status": "Running",
+    },
+    {
+      "name": "Network 3",
+      "status": "Running",
+    },
+    {
+      "name": "Network 4",
+      "status": "Running",
+    },
+    {
+      "name": "Network 5",
+      "status": "Running",
+    },
+    {
+      "name": "Network 6",
+      "status": "Running",
+    },
+    {
+      "name": "Network 7",
+      "status": "Running",
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +53,14 @@ class _HomePageState extends State<HomePage> {
     // final height = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
-        appBar: const PreferredSize(
-            preferredSize: Size.fromHeight(100.0),
+        appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(100.0),
             child: TopBarFb(
+              func: () {
+                // print("Back");
+                Get.back();
+              },
+              autoback: false,
               title: "Dashboard",
               upperTitle: "Welcome Back,",
             )),
@@ -42,22 +79,20 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: WrapCrossAlignment.start,
                     alignment: WrapAlignment.spaceEvenly,
                     // direction: Axis.horizontal,
-                    // spacing: 20,
+                    spacing: 20,
                     runSpacing: 30,
                     children: [
                       ViewCards(
-                        text: 12.toString(),
+                        text: 2.toString(),
                         imageUrl: imageURL,
                         subtitle: "WORKSPACES",
                         onPressed: () {
                           // print("Network");
                         },
                       ),
-                      const SizedBox(
-                        width: 20,
-                      ),
+
                       ViewCards(
-                        text: 12.toString(),
+                        text: 3.toString(),
                         imageUrl: imageURL,
                         subtitle: "NETWORKS",
                         onPressed: () {
@@ -73,11 +108,9 @@ class _HomePageState extends State<HomePage> {
                           // print("Network");
                         },
                       ),
-                      const SizedBox(
-                        width: 20,
-                      ),
+
                       ViewCards(
-                        text: 12.toString(),
+                        text: 1.toString(),
                         imageUrl: imageURL,
                         subtitle: "CLOUDS",
                         onPressed: () {
@@ -99,13 +132,16 @@ class _HomePageState extends State<HomePage> {
                     ),
                     // ListView for showing all running nodes
                     child: ListView.builder(
-                        itemCount: 10,
+                        itemCount: _nodeData.length,
                         itemBuilder: (context, index) {
                           return ListTile(
-                            onTap: () {},
+                            onTap: () {
+                              Get.to(() => const IndividualNode());
+                            },
                             leading: const Icon(Icons.ac_unit),
-                            title: const Text("Node 1"),
-                            subtitle: const Text("Running"),
+                            title: Text(_nodeData[index]["name"] as String),
+                            subtitle:
+                                Text(_nodeData[index]["status"] as String),
                             trailing: const Icon(Icons.arrow_forward_ios),
                           );
                         }),
