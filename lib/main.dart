@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: true,
       title: 'HyperBASE',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -55,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final isSmallScreen = MediaQuery.of(context).size.width < 600;
     return Scaffold(
       body: PageView(
         controller: _pageController,
@@ -63,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
             bottomBarPages.length, (index) => bottomBarPages[index]),
       ),
       extendBody: true,
-      bottomNavigationBar: (bottomBarPages.length <= maxCount)
+      bottomNavigationBar: (isSmallScreen)
           ? AnimatedNotchBottomBar(
               pageController: _pageController,
               color: Colors.white,

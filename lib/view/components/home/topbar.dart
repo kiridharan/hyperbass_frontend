@@ -1,4 +1,7 @@
+import 'package:blockchain/main.dart';
+import 'package:blockchain/view/pages/createnode/create_node.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class TopBarFb extends StatelessWidget {
   final bool autoback;
@@ -19,6 +22,8 @@ class TopBarFb extends StatelessWidget {
   final errorColor = const Color(0xffEF4444);
   @override
   Widget build(BuildContext context) {
+    // check for the screen size
+    final isSmallScreen = MediaQuery.of(context).size.width > 600;
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 100,
@@ -53,6 +58,43 @@ class TopBarFb extends StatelessWidget {
                         fontWeight: FontWeight.bold))
               ],
             ),
+            const Spacer(),
+            isSmallScreen
+                ? Visibility(
+                    child: Row(
+                      children: [
+                        // Icon button to navitate to the Home page , crerate node page and the profile page
+                        IconButton(
+                          onPressed: () {
+                            Get.to(() => const CreateNode());
+                          },
+                          icon: const Icon(
+                            Icons.create_outlined,
+                            color: Colors.white,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            Get.to(() => const MyHomePage());
+                          },
+                          icon: const Icon(
+                            Icons.home_filled,
+                            color: Colors.white,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            Get.to(() => const Page4());
+                          },
+                          icon: const Icon(
+                            Icons.person,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : const SizedBox()
           ],
         ),
       ),

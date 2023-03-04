@@ -17,33 +17,17 @@ class _HomePageState extends State<HomePage> {
   final String imageURL = "assets/images/node.png";
   final _nodeData = [
     {
-      "name": "Network 1",
-      "status": "Running",
+      "project_name": "KCG College",
+      "node_status": "Active",
     },
     {
-      "name": "Network 2",
-      "status": "Running",
+      "project_name": "Staff Project",
+      "node_status": "Active",
     },
     {
-      "name": "Network 3",
-      "status": "Running",
-    },
-    {
-      "name": "Network 4",
-      "status": "Running",
-    },
-    {
-      "name": "Network 5",
-      "status": "Running",
-    },
-    {
-      "name": "Network 6",
-      "status": "Running",
-    },
-    {
-      "name": "Network 7",
-      "status": "Running",
-    },
+      "project_name": "Student Data",
+      "node_status": "Stopped",
+    }
   ];
 
   @override
@@ -75,10 +59,8 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Wrap(
-                    // crossAxisAlignment: WrapCrossAlignment
                     crossAxisAlignment: WrapCrossAlignment.start,
                     alignment: WrapAlignment.spaceEvenly,
-                    // direction: Axis.horizontal,
                     spacing: 20,
                     runSpacing: 30,
                     children: [
@@ -138,10 +120,18 @@ class _HomePageState extends State<HomePage> {
                             onTap: () {
                               Get.to(() => const IndividualNode());
                             },
-                            leading: const Icon(Icons.ac_unit),
-                            title: Text(_nodeData[index]["name"] as String),
+                            leading: Icon(
+                              _nodeData[index]["node_status"] == "Active"
+                                  ? Icons.circle
+                                  : Icons.rectangle,
+                              color: _nodeData[index]["node_status"] == "Active"
+                                  ? Colors.green
+                                  : Colors.red,
+                            ),
+                            title: Text(
+                                _nodeData[index]["project_name"] as String),
                             subtitle:
-                                Text(_nodeData[index]["status"] as String),
+                                Text(_nodeData[index]["node_status"] as String),
                             trailing: const Icon(Icons.arrow_forward_ios),
                           );
                         }),

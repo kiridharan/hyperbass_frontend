@@ -1,4 +1,5 @@
 import 'package:blockchain/view/components/home/topbar.dart';
+import 'package:blockchain/view/pages/individualnode/individual_node.dart';
 import 'package:flutter/material.dart';
 import 'package:code_editor/code_editor.dart';
 
@@ -60,7 +61,7 @@ class CodeEdit extends StatelessWidget {
       FileEditor(
         name: "sample.sol",
         language: "solidity",
-        code: "a { color: red; }",
+        code: contentOfPage3.join("\n"),
       ),
     ];
 
@@ -70,8 +71,10 @@ class CodeEdit extends StatelessWidget {
       files: files, // the files created above
       // you can customize the editor as you want
       styleOptions: EditorModelStyleOptions(
+        // theme: EditorModelStyleOptionsTheme.dark,
+
         heightOfContainer: MediaQuery.of(context).size.height / 1.5,
-        fontSize: 13,
+        fontSize: 15,
       ),
     );
 
@@ -83,7 +86,10 @@ class CodeEdit extends StatelessWidget {
         preferredSize: const Size.fromHeight(100.0),
         child: TopBarFb(
           func: () {
-            Navigator.pop(context);
+            Navigator.pop(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const IndividualNode()));
           },
           autoback: true,
           title: '',
