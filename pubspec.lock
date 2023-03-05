@@ -182,6 +182,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.12"
+  flutter_countdown_timer:
+    dependency: "direct main"
+    description:
+      name: flutter_countdown_timer
+      sha256: dfcbd7d6f76a5589f78f3f3ba2f9ea2e199368eccc1adce4153ce985b9587bc5
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.0"
   flutter_highlight:
     dependency: transitive
     description:
@@ -190,6 +198,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.0"
+  flutter_inappwebview:
+    dependency: transitive
+    description:
+      name: flutter_inappwebview
+      sha256: f73505c792cf083d5566e1a94002311be497d984b5607f25be36d685cf6361cf
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.7.2+3"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -198,6 +214,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  flutter_localizations:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -288,6 +309,38 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  in_app_purchases_interface:
+    dependency: transitive
+    description:
+      name: in_app_purchases_interface
+      sha256: "3ffea1749c42752aa09a92f1c18123a18340a0aed5ff020f58ba265693b276ff"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.8"
+  in_app_purchases_intl:
+    dependency: transitive
+    description:
+      name: in_app_purchases_intl
+      sha256: "691e5d889852499d7748af45b341a2103e14b2d3dd5a2bf8d2d06bfbb01e70bd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.6"
+  in_app_purchases_paywall_ui:
+    dependency: "direct main"
+    description:
+      name: in_app_purchases_paywall_ui
+      sha256: acd5dc5c283f763e4c5556b86ef1e2b738b11e5f1b402216d27d19fa3ce58248
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.0"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      sha256: "910f85bce16fb5c6f614e117efa303e85a1731bb0081edf3604a2ae6e9a3cc91"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.17.0"
   io:
     dependency: transitive
     description:

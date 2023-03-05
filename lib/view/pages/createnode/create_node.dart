@@ -21,8 +21,8 @@ class _CreateNodeState extends State<CreateNode> {
             child: TopBarFb(
               func: () => Navigator.pop(context),
               autoback: false,
-              title: 'Create Node',
-              upperTitle: "Create a new node",
+              title: 'Create Peer',
+              upperTitle: "Create a new peer",
             ),
           ),
           body: SingleChildScrollView(

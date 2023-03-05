@@ -34,8 +34,10 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_code_editor: ^0.2.12
+  flutter_countdown_timer: ^4.1.0
   get: ^4.6.5
   google_fonts: ^4.0.3
+  in_app_purchases_paywall_ui: ^0.7.0
   lottie: ^2.2.0
   responsive_builder: ^0.5.1
   syncfusion_flutter_datagrid: ^20.4.50

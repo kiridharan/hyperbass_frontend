@@ -1,5 +1,8 @@
-import 'package:blockchain/main.dart';
+import 'package:blockchain/view/pages/channel/channel_creation.dart';
 import 'package:blockchain/view/pages/createnode/create_node.dart';
+import 'package:blockchain/view/pages/home/home_page.dart';
+import 'package:blockchain/view/pages/profile/profile_subs_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -63,8 +66,7 @@ class TopBarFb extends StatelessWidget {
                 ? Visibility(
                     child: Row(
                       children: [
-                        // Icon button to navitate to the Home page , crerate node page and the profile page
-                        IconButton(
+                        TextButton.icon(
                           onPressed: () {
                             Get.to(() => const CreateNode());
                           },
@@ -72,25 +74,51 @@ class TopBarFb extends StatelessWidget {
                             Icons.create_outlined,
                             color: Colors.white,
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            Get.to(() => const MyHomePage());
-                          },
-                          icon: const Icon(
-                            Icons.home_filled,
-                            color: Colors.white,
+                          label: const Text(
+                            'Create Peer',
+                            style: TextStyle(color: Colors.white),
                           ),
                         ),
-                        IconButton(
+                        TextButton.icon(
                           onPressed: () {
-                            Get.to(() => const Page4());
+                            Get.to(() => const ChannelCreation());
                           },
                           icon: const Icon(
-                            Icons.person,
+                            Icons.add,
                             color: Colors.white,
                           ),
+                          label: const Text(
+                            'Create Channel',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
+                        TextButton.icon(
+                          onPressed: () {
+                            Get.to(() => const HomePage());
+                          },
+                          icon: const Icon(
+                            CupertinoIcons.home,
+                            color: Colors.white,
+                          ),
+                          label: const Text(
+                            'Dashboard',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        TextButton.icon(
+                          onPressed: () {
+                            Get.to(() => const ProfileSubs());
+                          },
+                          icon: const Icon(
+                            CupertinoIcons.profile_circled,
+                            color: Colors.white,
+                          ),
+                          label: const Text(
+                            'Profile',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        // ProfileSubs
                       ],
                     ),
                   )
