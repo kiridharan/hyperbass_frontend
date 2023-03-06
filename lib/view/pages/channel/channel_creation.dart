@@ -53,7 +53,9 @@ class _ChannelCreationState extends State<ChannelCreation> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(100.0),
         child: TopBarFb(
-          func: null,
+          func: () {
+            Get.back();
+          },
           autoback: true,
           title: 'Channels',
           upperTitle: "Channel Creation",
@@ -90,14 +92,18 @@ class _ChannelCreationState extends State<ChannelCreation> {
               ),
 
               // select project name from drop down
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              Wrap(
+                alignment: WrapAlignment.center,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                //  S direction: Axis.vertical,
+
+                // crossAxisAlignment: WrapCrossAlignment.start,
                 children: [
                   const Text("Select Project Name: "),
                   SizedBox(
-                    height: 50,
-                    width: 200,
+                    height: height / 3,
+                    width: width / 3.5,
                     child: DropdownButton<String>(
                       isExpanded: true,
                       value: _project,

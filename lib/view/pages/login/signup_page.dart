@@ -98,7 +98,7 @@ class _SignUpViewState extends State<SignUpView> {
         size.width > 600
             ? Container()
             : Lottie.asset(
-                'assets/wave.json',
+                'lottie/wave.json',
                 height: size.height * 0.2,
                 width: size.width,
                 fit: BoxFit.fill,

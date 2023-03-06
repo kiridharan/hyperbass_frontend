@@ -1,6 +1,9 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
+import 'package:blockchain/view/pages/channel/channel_creation.dart';
 import 'package:blockchain/view/pages/createnode/create_node.dart';
 import 'package:blockchain/view/pages/home/home_page.dart';
+import 'package:blockchain/view/pages/login/signup_page.dart';
+import 'package:blockchain/view/pages/profile/profile_subs_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const SignUpView(),
     );
   }
 }
@@ -36,11 +39,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   /// widget list
   final List<Widget> bottomBarPages = [
-    const Page3(),
+    // const Page3(),
     const CreateNode(),
     const HomePage(),
-    const Page4(),
-    const Page5(),
+    const ChannelCreation(),
+    const ProfileSubs(),
   ];
 
   @override
@@ -58,12 +61,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
     return Scaffold(
-      body: PageView(
-        controller: _pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        children: List.generate(
-            bottomBarPages.length, (index) => bottomBarPages[index]),
-      ),
+      body: (isSmallScreen)
+          ? PageView(
+              controller: _pageController,
+              physics: const NeverScrollableScrollPhysics(),
+              children: List.generate(
+                  bottomBarPages.length, (index) => bottomBarPages[index]),
+            )
+          : const HomePage(),
       extendBody: true,
       bottomNavigationBar: (isSmallScreen)
           ? AnimatedNotchBottomBar(
@@ -73,17 +78,17 @@ class _MyHomePageState extends State<MyHomePage> {
               notchColor: Colors.white,
               bottomBarItems: const [
                 ///svg example
-                BottomBarItem(
-                  inActiveItem: Icon(
-                    Icons.star,
-                    color: Colors.blueGrey,
-                  ),
-                  activeItem: Icon(
-                    Icons.star,
-                    color: Colors.blueAccent,
-                  ),
-                  itemLabel: 'Page 3',
-                ),
+                // BottomBarItem(
+                //   inActiveItem: Icon(
+                //     Icons.star,
+                //     color: Colors.blueGrey,
+                //   ),
+                //   activeItem: Icon(
+                //     Icons.star,
+                //     color: Colors.blueAccent,
+                //   ),
+                //   itemLabel: 'Page 3',
+                // ),
                 BottomBarItem(
                   inActiveItem: Icon(
                     Icons.create_outlined,

@@ -88,7 +88,7 @@ class _ProfileSubsState extends State<ProfileSubs> {
             GooglePlayActivePlan("yearly_pro", "com.tnx.packed"),
 
             // links to the subscription overview on iOS devices
-            AppleAppStoreActivePlan(),
+            // AppleAppStoreActivePlan(),
           ],
           // set true if subscriptions are loading
           isSubscriptionLoading: false,

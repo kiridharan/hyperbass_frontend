@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                       ViewCards(
                         text: 2.toString(),
                         imageUrl: imageURL,
-                        subtitle: "WORKSPACES",
+                        subtitle: "PROJECT",
                         onPressed: () {
                           // print("Network");
                         },
