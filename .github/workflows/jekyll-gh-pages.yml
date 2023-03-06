@@ -33,7 +33,8 @@ jobs:
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
-          destination: ./build/web
+          
+          destination: ./build/web/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
