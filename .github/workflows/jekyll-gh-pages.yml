@@ -34,7 +34,7 @@ jobs:
         with:
           source: ./build/web/
           
-          destination: ./build/web/
+          destination: ./
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
