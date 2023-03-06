@@ -2,7 +2,6 @@ import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_not
 import 'package:blockchain/view/pages/channel/channel_creation.dart';
 import 'package:blockchain/view/pages/createnode/create_node.dart';
 import 'package:blockchain/view/pages/home/home_page.dart';
-import 'package:blockchain/view/pages/login/signup_page.dart';
 import 'package:blockchain/view/pages/profile/profile_subs_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,7 +18,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SignUpView(),
+      initialRoute: '/',
+      home: const MyHomePage(),
     );
   }
 }
